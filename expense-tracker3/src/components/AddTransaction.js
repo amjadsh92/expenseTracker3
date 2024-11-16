@@ -17,6 +17,7 @@ export default function AddTransaction({addTransaction}){
       type: typeRef.current.value,
     };
     addTransaction(transaction)
+    
   };
 
     
