@@ -12,27 +12,30 @@ import ShowTransactions from "./components/ShowingTransaction.js";
 function App() {
 
   const [transactions, setTransactions] = useState([])
+  let [filteredTransactions, setFilteredTransactions] = useState([])
+  let [filterOn, setFilterOn] = useState(false)
 
   function addTransaction(transactionToAdd) {
     setTransactions([...transactions, transactionToAdd]);
+    setFilteredTransactions([...transactions, transactionToAdd])
   }
 
   function filterTransaction(dataToFilter){
 
-     let filteredTransactions = transactions;
-
+     //let filteredTransactions = transactions;
+     
       if(dataToFilter.minAmount){
-        filteredTransactions = filteredTransactions.filter(transaction => parseFloat(transaction.amount) >= parseFloat(dataToFilter.minAmount));
+        setFilteredTransactions(filteredTransactions.filter(transaction => parseFloat(transaction.amount) >= parseFloat(dataToFilter.minAmount)));
     }
 
       if(dataToFilter.maxAmount){
-          filteredTransactions = filteredTransactions.filter(transaction => parseFloat(transaction.amount) <= parseFloat(dataToFilter.maxAmount));
+          setFilteredTransactions(filteredTransactions.filter(transaction => parseFloat(transaction.amount) <= parseFloat(dataToFilter.maxAmount)));
       }
 
       if (dataToFilter.filterDate){
 
 
-        filteredTransactions = filteredTransactions.filter( transaction => transaction.date == dataToFilter.filterDate );
+         setFilteredTransactions(filteredTransactions.filter( transaction => transaction.date == dataToFilter.filterDate ));
       
       }
 
@@ -40,7 +43,7 @@ function App() {
       if (dataToFilter.filterType){
 
 
-          filteredTransactions = filteredTransactions.filter( transaction => transaction.type == dataToFilter.filterType);
+          setFilteredTransactions(filteredTransactions.filter( transaction => transaction.type == dataToFilter.filterType));
         
         }
 
@@ -59,8 +62,8 @@ function App() {
 
       <TotalBudget transactions = {transactions} />
       <AddTransaction addTransaction = {addTransaction} />
-      <FilterTransaction filterTransaction = {filterTransaction} />
-      <ShowTransactions transactions ={transactions} />
+      <FilterTransaction filterTransaction = {filterTransaction} setFilterOn={setFilterOn} />
+      <ShowTransactions transactions ={transactions} filteredTransactions = {filteredTransactions} filterOn={filterOn} />
 
 
       

@@ -4,9 +4,11 @@ import {useRef} from "react"
 
 
 
-export default function ShowTransactions({transactions}){
-
+export default function ShowTransactions({transactions, filteredTransactions, filterOn}){
+    debugger
     console.log(transactions)
+    console.log(filteredTransactions)
+    console.log(filterOn)
    return(
 
 
@@ -26,7 +28,7 @@ export default function ShowTransactions({transactions}){
                     </thead>
                     <tbody>
                      
-                        {  transactions.map((transaction,index) =>  (
+                        { !filterOn ? (transactions.map((transaction,index) =>  (
        
 
                        <tr key={index}>
@@ -40,7 +42,21 @@ export default function ShowTransactions({transactions}){
                         </td>
                         </tr>
 
-                    ))}
+                    ))) : (filteredTransactions.map((filteredTransaction,index) =>  (
+       
+
+                        <tr key={index}>
+                         <td>{filteredTransaction.date}</td>
+                         <td>{filteredTransaction.description}</td>
+                         <td>{filteredTransaction.amount}</td>
+                         <td>{filteredTransaction.type}</td>
+                         <td>
+                             
+                             <button className="delete-btn">Delete</button>
+                         </td>
+                         </tr>
+ 
+                     ))) }
                                         
                 </tbody>
                 </table>

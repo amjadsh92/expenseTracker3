@@ -4,7 +4,7 @@ import {useRef} from "react"
 
 
 
-export default function FilterTransaction({filterTransaction}){
+export default function FilterTransaction({filterTransaction, setFilterOn}){
 
 
 
@@ -23,6 +23,7 @@ export default function FilterTransaction({filterTransaction}){
       filterType: filterType.current.value,
     };
     filterTransaction(dataToFilter)
+   
   };
   
           
@@ -35,6 +36,7 @@ export default function FilterTransaction({filterTransaction}){
       filterType: filterType.current.value,
     };
     filterTransaction(dataToFilter)
+    setFilterOn(true)
   };
 
     
@@ -57,7 +59,7 @@ export default function FilterTransaction({filterTransaction}){
                    
                 </select>
                 
-                <button type ="button" onClick={applyFilter}>Apply Filters</button>
+                <button type ="submit" onClick={applyFilter}>Apply Filters</button>
                 <button type="button" onClick={clearFilter} >Clear Filters</button>
             </div>
             
