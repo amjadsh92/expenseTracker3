@@ -13,8 +13,18 @@ export default function FilterTransaction({filterTransaction}){
   const filterDate = useRef();
   const filterType = useRef();
 
-
-  let data = {minAmount, maxAmount, filterDate, filterType}
+  
+  const clearFilter = (e) => {
+    e.preventDefault();
+    const dataToFilter = {
+      minAmount: minAmount.current.value,
+      maxAmount: maxAmount.current.value,
+      filterDate: filterDate.current.value,
+      filterType: filterType.current.value,
+    };
+    filterTransaction(dataToFilter)
+  };
+  
           
   const applyFilter = (e) => {
     e.preventDefault();
@@ -34,9 +44,9 @@ export default function FilterTransaction({filterTransaction}){
         return(
 
          
-           <div  class="container more-padding filters flex column space-between">
+           <div  className="container more-padding filters flex column space-between">
             <h3>Filters</h3>
-            <div class="filter-section flex space-around">
+            <div className="filter-section flex space-around">
                 <input type="number"  placeholder="Min Amount" ref={minAmount} />
                 <input type="number" placeholder="Max Amount" ref={maxAmount} />
                 <input type="date"   ref={filterDate}/>
@@ -48,7 +58,7 @@ export default function FilterTransaction({filterTransaction}){
                 </select>
                 
                 <button type ="button" onClick={applyFilter}>Apply Filters</button>
-                <button >Clear Filters</button>
+                <button type="button" onClick={clearFilter} >Clear Filters</button>
             </div>
             
             </div>

@@ -25,9 +25,9 @@ export default function AddTransaction({addTransaction}){
 
 
 
-        <section  class=" container more-padding transaction-form flex column space-between">
+        <section  className=" container more-padding transaction-form flex column space-between">
             <h3>Add Transaction</h3>
-            <form  class="flex space-around" onSubmit={handleSubmit}>
+            <form  className="flex space-around" onSubmit={handleSubmit}>
                 <input type="text"  placeholder="Description" ref={descriptionRef} />
                 <input type="number"  placeholder="Amount" ref={amountRef} />
                 <input type="date" ref={dateRef} />

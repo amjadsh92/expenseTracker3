@@ -7,7 +7,7 @@ import './styles/home.css'
 import TotalBudget from "./components/TotalBudget.js";
 import AddTransaction from "./components/AddTransaction.js";
 import FilterTransaction from "./components/FilteringTransaction.js";
-import "./components/ShowingTransaction.js"
+import ShowTransactions from "./components/ShowingTransaction.js";
 
 function App() {
 
@@ -53,13 +53,17 @@ function App() {
   return (
     <>
     <header>
-        <h1 class="auto fit-content"> Expense Tracker App</h1>
+        <h1 className="auto fit-content"> Expense Tracker App</h1>
     </header>
     <div className="App flex column space-evenly">
 
       <TotalBudget transactions = {transactions} />
       <AddTransaction addTransaction = {addTransaction} />
       <FilterTransaction filterTransaction = {filterTransaction} />
+      <ShowTransactions transactions ={transactions} />
+
+
+      
 
 
       </div> 
