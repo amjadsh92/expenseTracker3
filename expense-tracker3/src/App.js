@@ -5,7 +5,7 @@ import './styles/base/color.css'
 import './styles/base/utilities.css'
 import './styles/home.css'
 import TotalBudget from "./components/TotalBudget.js";
-import './components/AddTransaction.js'
+import AddTransaction from "./components/AddTransaction.js";
 import "./components/FilteringTransaction.js"
 import "./components/ShowingTransaction.js"
 
@@ -13,6 +13,9 @@ function App() {
 
   const [transactions, setTransactions] = useState([])
 
+  function addTransaction(transactionToAdd) {
+    setTransactions([...transactions, transactionToAdd]);
+  }
 
 
   return (
@@ -23,6 +26,7 @@ function App() {
     <div className="App flex column space-evenly">
 
       <TotalBudget transactions = {transactions} />
+      <AddTransaction addTransaction = {addTransaction} />
 
       </div> 
     </>

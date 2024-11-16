@@ -16,9 +16,9 @@ export default function TotalBudget({transactions}){
         
               transactions.forEach((transaction) => {
                 if (transaction.type === "income") {
-                  calculatedBudget += transaction.amount;
+                  calculatedBudget += parseInt(transaction.amount);
                 } else if (transaction.type === "expense") {
-                  calculatedBudget -= transaction.amount;
+                  calculatedBudget -= parseInt(transaction.amount);
                 }
               });
         
