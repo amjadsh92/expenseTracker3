@@ -6,7 +6,7 @@ import './styles/base/utilities.css'
 import './styles/home.css'
 import TotalBudget from "./components/TotalBudget.js";
 import AddTransaction from "./components/AddTransaction.js";
-import "./components/FilteringTransaction.js"
+import FilterTransaction from "./components/FilteringTransaction.js";
 import "./components/ShowingTransaction.js"
 
 function App() {
@@ -15,6 +15,38 @@ function App() {
 
   function addTransaction(transactionToAdd) {
     setTransactions([...transactions, transactionToAdd]);
+  }
+
+  function filterTransaction(dataToFilter){
+
+     let filteredTransactions = transactions;
+
+      if(dataToFilter.minAmount){
+        filteredTransactions = filteredTransactions.filter(transaction => parseFloat(transaction.amount) >= parseFloat(dataToFilter.minAmount));
+    }
+
+      if(dataToFilter.maxAmount){
+          filteredTransactions = filteredTransactions.filter(transaction => parseFloat(transaction.amount) <= parseFloat(dataToFilter.maxAmount));
+      }
+
+      if (dataToFilter.filterDate){
+
+
+        filteredTransactions = filteredTransactions.filter( transaction => transaction.date == dataToFilter.filterDate );
+      
+      }
+
+      
+      if (dataToFilter.filterType){
+
+
+          filteredTransactions = filteredTransactions.filter( transaction => transaction.type == dataToFilter.filterType);
+        
+        }
+
+  
+
+
   }
 
 
@@ -27,6 +59,8 @@ function App() {
 
       <TotalBudget transactions = {transactions} />
       <AddTransaction addTransaction = {addTransaction} />
+      <FilterTransaction filterTransaction = {filterTransaction} />
+
 
       </div> 
     </>
