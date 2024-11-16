@@ -1,46 +1,52 @@
+import { useState } from "react";
+import { useEffect } from "react";
+
 
 
 export default function TotalBudget({transactions}){
 
-   const totalBudget =  () => {
+  
+
+         let [budget, setBudget] = useState(0)
          
-        let budget = 0;
-
-        for (let transaction of transactions){
-
-            if (transaction.type === 'income'){
-
-                budget += transaction.amount
-                
+         
+         useEffect(() => {
+            if (transactions?.length) {
+              let calculatedBudget = 0;
+        
+              transactions.forEach((transaction) => {
+                if (transaction.type === "income") {
+                  calculatedBudget += transaction.amount;
+                } else if (transaction.type === "expense") {
+                  calculatedBudget -= transaction.amount;
+                }
+              });
+        
+              setBudget(calculatedBudget);
             }
+          }, [transactions]); 
 
-            else if (transaction.type === 'expense'){
-
-                budget -= transaction.amount
-                
-            }
-
-
-            } 
             
-      return budget
+
+        return(
+
+
+            <div  class="container flex row">
+            <h3>Total Budget = {budget}$ </h3>
+                
+            
+    
+            </div>
+    
+    
+    
+            )
+            
+    
 
     }
     
 
-      return(
+     
 
 
-        <div  class="container flex row">
-        <h3>Total Budget = </h3>
-         
-        <h3>{totalBudget}$</h3>
-
-        </div>
-
-
-
-      )
-
-
-}
