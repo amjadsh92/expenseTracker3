@@ -15,14 +15,8 @@ export default function FilterTransaction({filterTransaction, setFilterOn}){
 
   
   const clearFilter = (e) => {
-    e.preventDefault();
-    const dataToFilter = {
-      minAmount: minAmount.current.value,
-      maxAmount: maxAmount.current.value,
-      filterDate: filterDate.current.value,
-      filterType: filterType.current.value,
-    };
-    filterTransaction(dataToFilter)
+
+    setFilterOn(false)
    
   };
   

@@ -20,37 +20,37 @@ function App() {
     setFilteredTransactions([...transactions, transactionToAdd])
   }
 
-  function filterTransaction(dataToFilter){
-
-     //let filteredTransactions = transactions;
-     
-      if(dataToFilter.minAmount){
-        setFilteredTransactions(filteredTransactions.filter(transaction => parseFloat(transaction.amount) >= parseFloat(dataToFilter.minAmount)));
+  function filterTransaction(dataToFilter) {
+    let filtered = transactions; 
+  
+    if (dataToFilter.minAmount) {
+      filtered = filtered.filter(transaction => 
+        parseFloat(transaction.amount) >= parseFloat(dataToFilter.minAmount)
+      );
     }
-
-      if(dataToFilter.maxAmount){
-          setFilteredTransactions(filteredTransactions.filter(transaction => parseFloat(transaction.amount) <= parseFloat(dataToFilter.maxAmount)));
-      }
-
-      if (dataToFilter.filterDate){
-
-
-         setFilteredTransactions(filteredTransactions.filter( transaction => transaction.date == dataToFilter.filterDate ));
-      
-      }
-
-      
-      if (dataToFilter.filterType){
-
-
-          setFilteredTransactions(filteredTransactions.filter( transaction => transaction.type == dataToFilter.filterType));
-        
-        }
+  
+    if (dataToFilter.maxAmount) {
+      filtered = filtered.filter(transaction => 
+        parseFloat(transaction.amount) <= parseFloat(dataToFilter.maxAmount)
+      );
+    }
+  
+    if (dataToFilter.filterDate) {
+      filtered = filtered.filter(transaction => 
+        transaction.date === dataToFilter.filterDate
+      );
+    }
+  
+    if (dataToFilter.filterType) {
+      filtered = filtered.filter(transaction => 
+        transaction.type === dataToFilter.filterType
+      );
+    }
+  
+    setFilteredTransactions(filtered); 
+  }
 
   
-
-
-  }
 
 
   return (

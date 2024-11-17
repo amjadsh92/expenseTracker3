@@ -5,7 +5,7 @@ import {useRef} from "react"
 
 
 export default function ShowTransactions({transactions, filteredTransactions, filterOn}){
-    debugger
+    
     console.log(transactions)
     console.log(filteredTransactions)
     console.log(filterOn)
