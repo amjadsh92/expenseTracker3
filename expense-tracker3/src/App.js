@@ -20,6 +20,18 @@ function App() {
     setFilteredTransactions([...transactions, transactionToAdd])
   }
 
+  function deleteTransaction(indexToDelete) {
+    
+    const updatedTransactions = transactions.filter((_, index) => index !== indexToDelete);
+    setTransactions(updatedTransactions);
+
+    
+    
+    const updatedFilteredTransactions = filteredTransactions.filter((_, index) => index !== indexToDelete);
+    setFilteredTransactions(updatedFilteredTransactions);
+    
+  }
+
   function filterTransaction(dataToFilter) {
     let filtered = transactions; 
   
@@ -63,7 +75,7 @@ function App() {
       <TotalBudget transactions = {transactions} />
       <AddTransaction addTransaction = {addTransaction} />
       <FilterTransaction filterTransaction = {filterTransaction} setFilterOn={setFilterOn} />
-      <ShowTransactions transactions ={transactions} filteredTransactions = {filteredTransactions} filterOn={filterOn} />
+      <ShowTransactions transactions ={transactions} filteredTransactions = {filteredTransactions} deleteTransaction = {deleteTransaction} filterOn={filterOn} />
 
 
       

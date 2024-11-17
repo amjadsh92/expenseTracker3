@@ -4,11 +4,14 @@ import {useRef} from "react"
 
 
 
-export default function ShowTransactions({transactions, filteredTransactions, filterOn}){
+export default function ShowTransactions({transactions, filteredTransactions, deleteTransaction,  filterOn}){
     
     console.log(transactions)
     console.log(filteredTransactions)
     console.log(filterOn)
+
+
+
    return(
 
 
@@ -38,7 +41,7 @@ export default function ShowTransactions({transactions, filteredTransactions, fi
                         <td>{transaction.type}</td>
                         <td>
                             
-                            <button className="delete-btn">Delete</button>
+                            <button onClick={() => deleteTransaction(index)} className="delete-btn">Delete</button>
                         </td>
                         </tr>
 
@@ -52,7 +55,7 @@ export default function ShowTransactions({transactions, filteredTransactions, fi
                          <td>{filteredTransaction.type}</td>
                          <td>
                              
-                             <button className="delete-btn">Delete</button>
+                             <button onClick={()=>deleteTransaction(index)} className="delete-btn">Delete</button>
                          </td>
                          </tr>
  

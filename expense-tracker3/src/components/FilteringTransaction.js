@@ -54,7 +54,7 @@ export default function FilterTransaction({filterTransaction, setFilterOn}){
                 </select>
                 
                 <button type ="submit" onClick={applyFilter}>Apply Filters</button>
-                <button type="button" onClick={clearFilter} >Clear Filters</button>
+                <button type="submit" onClick={clearFilter} >Clear Filters</button>
             </div>
             
             </div>
