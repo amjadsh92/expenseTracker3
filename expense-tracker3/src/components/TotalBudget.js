@@ -24,6 +24,9 @@ export default function TotalBudget({transactions}){
         
               setBudget(calculatedBudget);
             }
+            else{
+                setBudget(0)
+            }
           }, [transactions]); 
 
             
